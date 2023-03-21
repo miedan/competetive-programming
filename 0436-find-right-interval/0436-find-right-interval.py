@@ -1,29 +1,25 @@
 class Solution:
     def findRightInterval(self, intervals: List[List[int]]) -> List[int]:
-        d = defaultdict(int)
-        end = []
+        dic = defaultdict(int)
         start = []
         for i in range (len(intervals)):
-            d[intervals[i][0]] = i
-            end.append(intervals[i][1])
+            dic[intervals[i][0]] = i
             start.append(intervals[i][0])
-        starts = sorted(list(d.keys()))
-        temp = []
-        for start, end in intervals:
-            if end in d:
-                temp.append(d[end])
+        start.sort()
+        output = []
+        for j in range(len(intervals)):
+            right = bisect_left(start, intervals[j][1])
+            if right >= len(start):
+                output.append(-1)
+            
             else:
-                index = bisect.bisect_right(starts, end)
-                if index >= len(starts):
-                    temp.append(-1)
-                else:
-                    right = starts[index]
-                    temp.append(d[right])
-        return temp
-
+                output.append(dic[start[right]])
+        return output
+            
             
         
         
+       
      
        
 
