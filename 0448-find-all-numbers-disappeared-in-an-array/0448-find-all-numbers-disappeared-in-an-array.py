@@ -14,17 +14,4 @@ class Solution:
         return result
 
         
-        # while pointer < n:
-        #     curr = nums[pointer]
-        #     if curr - 1 < n and curr - 1 != pointer and curr != nums[curr - 1]:
-        #         nums[pointer], nums[curr - 1] = nums[curr - 1], nums[pointer]
-        #     else:
-        #         pointer += 1
-
-        # # Find all missing numbers 
-        # res = []
-        # for i in range(n):
-        #     if nums[i] != i + 1:
-        #         res.append(i + 1)
-
-        # return res
+       
