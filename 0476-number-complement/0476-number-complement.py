@@ -1,17 +1,12 @@
 class Solution:
     def findComplement(self, num: int) -> int:
-        c = [2 ** i for i in range(64)]
-        s = 0
+        s = [2 ** i for i in range(64)]
+        summ = 0
         i = 0
-        while s < num:
-            s += c[i]
+        while summ < num:
+            summ += s[i]
             i += 1
-        return (s ^ num)
-       
-
-
-        
-        
-        
+        return (summ ^ num)
+            
         
         
