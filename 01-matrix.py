@@ -4,7 +4,7 @@ class Solution:
         n, m = len(mat), len(mat[0])
 
         directions = [[0, 1], [0, -1], [1, 0], [-1, 0]]
-        
+
         output = [[float('inf') for i in range(m)] for j in range(n)]
         que = deque()
         visited = set()
@@ -20,7 +20,7 @@ class Solution:
             row, col = que.popleft()
             for r, c in directions:
                 if row + r >= 0 and col + c >= 0 and row + r < n and col + c < m and (row + r, col + c) not in visited:
-                    output[row + r][col + c] = min(output[row + r][col + c], output[row][col] + 1)
+                    output[row + r][col + c] = output[row][col] + 1
                     que.append((row + r, col + c))
                     visited.add((row + r, col + c))
         
