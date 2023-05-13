@@ -21,13 +21,13 @@ class Solution:
                 incoming[i] -= 1
                 output[i].add(now)
 
-                if output[now]:
-                    for j in output[now]:
-                        output[i].add(j)
+                
+                for j in output[now]:
+                    output[i].add(j)
 
                 if incoming[i] == 0: 
                     que.append(i) 
-                    
+
         for i in range(n):
             output[i] = sorted(list(output[i]))
                     
