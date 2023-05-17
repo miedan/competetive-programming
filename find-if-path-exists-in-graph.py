@@ -1,30 +1,21 @@
 class Solution:
     def validPath(self, n: int, edges: List[List[int]], source: int, destination: int) -> bool:
 
-        graph = defaultdict(list)
-        parent = {i : i  for i in range(n)}
-       
-        visited = set()
+        parent = {i : i for i in range(n)}
+
+        def find(a):
+
+            while parent[a] != a:
+                a = parent[a]
+            return a
+
+        def union(v1, v2):
+
+             parentv1 = find(v1)
+             parentv2 = find(v2)
+             parent[parentv1] = parent[parentv2]
+
         for a, b in edges:
-            graph[a].append(b)
-            graph[b].append(a)
+            union(a, b)
 
-        def dfs(node, par):
-
-            if node in visited:
-                return
-            visited.add(node)
-
-            for j in graph[node]:
-                parent[j] = par
-                dfs(j, par)
-          
-
-        for i in range(n):
-            if i not in visited:
-                dfs(i, i)
-
-        if parent[source] == parent[destination]:
-            return True
-        else:
-            return False
+        return find(source) == find(destination)
