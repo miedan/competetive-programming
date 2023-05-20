@@ -1,7 +1,8 @@
 class Solution:
     def largestLocal(self, grid: List[List[int]]) -> List[List[int]]:
         n = len(grid)
-        maxlocal = [[0 for k in range(n -2)] for p in range(n - 2)]
+        maxlocal = [[0 for _ in range(n -2)] for _ in range(n - 2)]
+        
         for i in range(n - 2):
             for j in range(n - 2):
                 
