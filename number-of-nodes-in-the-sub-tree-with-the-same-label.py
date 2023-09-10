@@ -12,15 +12,14 @@ class Solution:
         def dfs(node, prev):
 
             count = Counter()
-            label = labels[node]
-            count[label]=1
+            count[labels[node]]=1
             
-            for nei in graph[node]:
-                if nei == prev:
+            for neigh in graph[node]:
+                if neigh == prev:
                     continue
-                count += dfs(nei, node)
+                count += dfs(neigh, node)
                                     
-            self.ans[node] = count[label]
+            self.ans[node] = count[labels[node]]
             return count
         
         dfs(0, None)
