@@ -1,0 +1,44 @@
+#include <iostream>
+#include <vector>
+#include <limits>
+
+using namespace std;
+
+int main() {
+    int n, m;
+    cin >> n >> m;
+
+    vector<vector<int>> graph(m, vector<int>(3));
+
+    for (int i = 0; i < m; ++i) {
+        for (int j = 0; j < 3; ++j) {
+            cin >> graph[i][j];
+        }
+    }
+
+    vector<int> distance(n + 1, 30000);
+    distance[1] = 0;
+
+    for (int i = 0; i < n - 1; ++i) {
+        for (const auto& edge : graph) {
+            int start = edge[0];
+            int end = edge[1];
+            int weight = edge[2];
+
+            if (distance[end] > distance[start] + weight && distance[start] != 30000) {
+                distance[end] = distance[start] + weight;
+            }
+        }
+    }
+
+    vector<int> ans;
+    for (int i = 1; i <= n; ++i) {
+        ans.push_back(distance[i]);
+    }
+
+    for (int i = 0; i < n; ++i) {
+        cout << ans[i] << " ";
+    }
+
+    return 0;
+}
