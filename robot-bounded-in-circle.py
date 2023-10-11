@@ -16,8 +16,11 @@ class Solution:
             elif ch == 'L':
 
                 direction = (-direction[1], direction[0])
-                
+
             elif ch == 'R':
                 direction = (direction[1], -direction[0])
-        
-        return position == [0,0] or direction != (0,1)
+
+
+        if position == [0,0] or direction != (0,1):
+            return True
+        return False
