@@ -3,6 +3,8 @@ class Solution:
 
         parent = [i for i in range(len(strs))]
 
+        group = len(strs)
+
         def find(x):
             
             if parent[x] != x:
@@ -10,12 +12,13 @@ class Solution:
             return parent[x]
         
         def union(x, y):
-
-            parnet_x = find(x)
+            nonlocal group
+            parent_x = find(x)
             parent_y = find(y)
         
+            group -= parent_x != parent_y   
 
-            parent[parnet_x] = parent[parent_y]
+            parent[parent_x] = parent[parent_y]
 
 
         for i in range(len(strs)):
@@ -38,12 +41,6 @@ class Solution:
                 if swap_count <= 2:
                     union(i,j)
 
-        for i in range(len(parent)):
-            find(i)
+        
 
-        group = set()
-
-        for p in parent:
-            group.add(p)
-
-        return len(group)
+        return group
